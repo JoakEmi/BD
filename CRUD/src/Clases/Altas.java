@@ -1,4 +1,4 @@
-
+//Altas
 package Clases;
 
 import Conexiones.Conexion;
