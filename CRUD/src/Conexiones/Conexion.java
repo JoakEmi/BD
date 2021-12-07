@@ -14,7 +14,7 @@ public class Conexion {
 
         try 
             {
-                String rutafile = "alumnos.accdb";
+                String rutafile = "SuperMercado.accdb";
                 String Url = "jdbc:ucanaccess://" + rutafile;
                 ccn = DriverManager.getConnection(Url);
                 st = ccn.createStatement();

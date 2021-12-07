@@ -3,6 +3,7 @@
 package Clases;
 
 import Conexiones.Conexion;
+import Productos.AltasProductos;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyVetoException;
@@ -130,8 +131,8 @@ public class InterfazSecundaria extends javax.swing.JFrame {
 
     private void AltasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AltasActionPerformed
         if(tabla.equals("Productos")){
-            //AltasProductos altasproductos = new AltasProductos();
-            //altasproductos.setVisible(true);
+            AltasProductos altasproductos = new AltasProductos();
+            altasproductos.setVisible(true);
         }
         //Altas altas = new Altas();
         //altas.setVisible(true);
