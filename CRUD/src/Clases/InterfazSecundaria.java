@@ -1,4 +1,4 @@
-
+//Interfaz Secundaria
 
 package Clases;
 
