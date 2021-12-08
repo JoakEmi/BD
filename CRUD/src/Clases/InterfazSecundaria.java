@@ -3,7 +3,8 @@
 package Clases;
 
 import Conexiones.Conexion;
-import Productos.AltasProductos;
+import Productos.*;
+import Clientes.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyVetoException;
@@ -125,17 +126,24 @@ public class InterfazSecundaria extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void CambiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CambiosActionPerformed
-        Cambios cambios = new Cambios();
-        cambios.setVisible(true);
+        if(tabla.equals("Productos")){
+            //CambiosProductos cambiospoductos = new CambiosProductos();
+            //cambiosproductos.setVisible(true);
+        }else if(tabla.equals("Clientes")){
+            CambiosClientes cambiosclientes = new CambiosClientes();
+            cambiosclientes.setVisible(true);
+        }
     }//GEN-LAST:event_CambiosActionPerformed
 
     private void AltasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AltasActionPerformed
         if(tabla.equals("Productos")){
             AltasProductos altasproductos = new AltasProductos();
             altasproductos.setVisible(true);
+        }else if(tabla.equals("Clientes")){
+            AltasClientes altasclientes = new AltasClientes();
+            altasclientes.setVisible(true);
         }
-        //Altas altas = new Altas();
-        //altas.setVisible(true);
+        
     }//GEN-LAST:event_AltasActionPerformed
 
     private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
@@ -143,13 +151,25 @@ public class InterfazSecundaria extends javax.swing.JFrame {
     }//GEN-LAST:event_SalirActionPerformed
 
     private void BajasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BajasActionPerformed
-        Bajas bajas = new Bajas();
-        bajas.setVisible(true);
+        if(tabla.equals("Productos")){
+            //BajasProductos bajaspoductos = new BajasProductos();
+            //bajasproductos.setVisible(true);
+        }else if(tabla.equals("Clientes")){
+            BajasClientes bajasclientes = new BajasClientes();
+            bajasclientes.setVisible(true);
+        }
+        
+        
     }//GEN-LAST:event_BajasActionPerformed
 
     private void ConsultasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultasActionPerformed
-        Consultas consultas = new Consultas();
-        consultas.setVisible(true);
+        if(tabla.equals("Productos")){
+            //ConsultasProductos consultaspoductos = new ConsultasProductos();
+            //Cosnultasproductos.setVisible(true);
+        }else if(tabla.equals("Clientes")){
+            ConsultasClientes consultasclientes = new ConsultasClientes();
+            consultasclientes.setVisible(true);
+        }
     }//GEN-LAST:event_ConsultasActionPerformed
 
     
