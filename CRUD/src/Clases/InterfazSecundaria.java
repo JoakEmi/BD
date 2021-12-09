@@ -5,6 +5,7 @@ package Clases;
 import Conexiones.Conexion;
 import Productos.*;
 import Clientes.*;
+import Proveedores.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyVetoException;
@@ -132,6 +133,9 @@ public class InterfazSecundaria extends javax.swing.JFrame {
         }else if(tabla.equals("Clientes")){
             CambiosClientes cambiosclientes = new CambiosClientes();
             cambiosclientes.setVisible(true);
+        }else if(tabla.equals("Proveedores")){
+            CambiosProveedores cambiosproveedores = new CambiosProveedores();
+            cambiosproveedores.setVisible(true);
         }
     }//GEN-LAST:event_CambiosActionPerformed
 
@@ -142,6 +146,9 @@ public class InterfazSecundaria extends javax.swing.JFrame {
         }else if(tabla.equals("Clientes")){
             AltasClientes altasclientes = new AltasClientes();
             altasclientes.setVisible(true);
+        }else if(tabla.equals("Proveedores")){
+            AltasProveedores altasproveedores = new AltasProveedores();
+            altasproveedores.setVisible(true);
         }
         
     }//GEN-LAST:event_AltasActionPerformed
@@ -157,6 +164,9 @@ public class InterfazSecundaria extends javax.swing.JFrame {
         }else if(tabla.equals("Clientes")){
             BajasClientes bajasclientes = new BajasClientes();
             bajasclientes.setVisible(true);
+        }else if(tabla.equals("Proveedores")){
+            BajasProveedores bajasproveedores = new BajasProveedores();
+            bajasproveedores.setVisible(true);
         }
         
         
@@ -169,7 +179,10 @@ public class InterfazSecundaria extends javax.swing.JFrame {
         }else if(tabla.equals("Clientes")){
             ConsultasClientes consultasclientes = new ConsultasClientes();
             consultasclientes.setVisible(true);
-        }
+        }else if(tabla.equals("Proveedores")){
+            ConsultasProveedores consultasproveedores = new ConsultasProveedores();
+            consultasproveedores.setVisible(true);
+        }        
     }//GEN-LAST:event_ConsultasActionPerformed
 
     
