@@ -40,7 +40,7 @@ public class AltasCajeros extends javax.swing.JFrame {
         txtNombreCajero = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         txtApellidoCajero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -123,6 +123,7 @@ public class AltasCajeros extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtApellidoCajeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApellidoCajeroActionPerformed
