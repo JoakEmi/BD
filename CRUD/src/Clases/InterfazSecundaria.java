@@ -6,6 +6,13 @@ import Conexiones.Conexion;
 import Productos.*;
 import Clientes.*;
 import Proveedores.*;
+import Cajeros.*;
+import Ventas.*;
+import DetalleVenta.*;
+import Compras.*;
+import DetalleCompra.*;
+import Categoria.*;
+import Marca.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyVetoException;
@@ -40,7 +47,7 @@ public class InterfazSecundaria extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         Altas.setText("ALTAS");
         Altas.addActionListener(new java.awt.event.ActionListener() {
@@ -128,15 +135,37 @@ public class InterfazSecundaria extends javax.swing.JFrame {
 
     private void CambiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CambiosActionPerformed
         if(tabla.equals("Productos")){
-            //CambiosProductos cambiospoductos = new CambiosProductos();
-            //cambiosproductos.setVisible(true);
+            CambiosProductos cambiosproductos = new CambiosProductos();
+            cambiosproductos.setVisible(true);
         }else if(tabla.equals("Clientes")){
             CambiosClientes cambiosclientes = new CambiosClientes();
             cambiosclientes.setVisible(true);
         }else if(tabla.equals("Proveedores")){
             CambiosProveedores cambiosproveedores = new CambiosProveedores();
             cambiosproveedores.setVisible(true);
+        }else if(tabla.equals("Cajeros")){
+            CambiosCajeros cambioscajeros = new CambiosCajeros();
+            cambioscajeros.setVisible(true);
+        }else if(tabla.equals("Ventas")){
+            CambiosVentas cambiosVentas = new CambiosVentas();
+            cambiosVentas.setVisible(true);
+        }else if(tabla.equals("DetalleVenta")){
+            CambiosDetalleVenta cambiosDetalleVenta = new CambiosDetalleVenta();
+            cambiosDetalleVenta.setVisible(true);
+        }else if(tabla.equals("Compras")){
+            CambiosCompras cambiosCompras = new CambiosCompras();
+            cambiosCompras.setVisible(true);
+        }else if(tabla.equals("DetalleCompra")){
+            CambiosDetalleCompra cambiosDetalleCompra = new CambiosDetalleCompra();
+            cambiosDetalleCompra.setVisible(true);
+        }else if(tabla.equals("Categoria")){
+            CambiosCategoria cambiosCategoria = new CambiosCategoria();
+            cambiosCategoria.setVisible(true);
+        }else if(tabla.equals("Marca")){
+            CambiosMarca cambiosMarca = new CambiosMarca();
+            cambiosMarca.setVisible(true);
         }
+        
     }//GEN-LAST:event_CambiosActionPerformed
 
     private void AltasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AltasActionPerformed
@@ -149,6 +178,27 @@ public class InterfazSecundaria extends javax.swing.JFrame {
         }else if(tabla.equals("Proveedores")){
             AltasProveedores altasproveedores = new AltasProveedores();
             altasproveedores.setVisible(true);
+        }else if(tabla.equals("Cajeros")){
+            AltasCajeros altasCajeros = new AltasCajeros();
+            altasCajeros.setVisible(true);
+        }else if(tabla.equals("Ventas")){
+            AltasVentas altasVentas = new AltasVentas();
+            altasVentas.setVisible(true);
+        }else if(tabla.equals("DetalleVenta")){
+            AltasDetalleVenta altasDetalleVenta = new AltasDetalleVenta();
+            altasDetalleVenta.setVisible(true);
+        }else if(tabla.equals("Compras")){
+            AltasCompras altasCompras = new AltasCompras();
+            altasCompras.setVisible(true);
+        }else if(tabla.equals("DetalleCompra")){
+            AltasDetalleCompra altasDetalleCompra = new AltasDetalleCompra();
+            altasDetalleCompra.setVisible(true);
+        }else if(tabla.equals("Categoria")){
+            AltasCategoria altasCategoria = new AltasCategoria();
+            altasCategoria.setVisible(true);
+        }else if(tabla.equals("Marca")){
+            AltasMarca altasMarca = new AltasMarca();
+            altasMarca.setVisible(true);
         }
         
     }//GEN-LAST:event_AltasActionPerformed
@@ -159,14 +209,35 @@ public class InterfazSecundaria extends javax.swing.JFrame {
 
     private void BajasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BajasActionPerformed
         if(tabla.equals("Productos")){
-            //BajasProductos bajaspoductos = new BajasProductos();
-            //bajasproductos.setVisible(true);
+            BajasProductos bajasproductos = new BajasProductos();
+            bajasproductos.setVisible(true);
         }else if(tabla.equals("Clientes")){
             BajasClientes bajasclientes = new BajasClientes();
             bajasclientes.setVisible(true);
         }else if(tabla.equals("Proveedores")){
             BajasProveedores bajasproveedores = new BajasProveedores();
             bajasproveedores.setVisible(true);
+        }else if(tabla.equals("Cajeros")){
+            BajasCajeros bajasCajeros = new BajasCajeros();
+            bajasCajeros.setVisible(true);
+        }else if(tabla.equals("Ventas")){
+            BajasVentas bajasVentas = new BajasVentas();
+            bajasVentas.setVisible(true);
+        }else if(tabla.equals("DetalleVenta")){
+            BajasDetalleVenta bajasDetalleVenta = new BajasDetalleVenta();
+            bajasDetalleVenta.setVisible(true);
+        }else if(tabla.equals("Compras")){
+            BajasCompras bajasCompras = new BajasCompras();
+            bajasCompras.setVisible(true);
+        }else if(tabla.equals("DetalleCompra")){
+            BajasDetalleCompra bajasDetalleCompra = new BajasDetalleCompra();
+            bajasDetalleCompra.setVisible(true);
+        }else if(tabla.equals("Categoria")){
+            BajasCategoria bajasCategoria = new BajasCategoria();
+            bajasCategoria.setVisible(true);        
+        }else if(tabla.equals("Marca")){
+            BajasMarca bajasMarca = new BajasMarca();
+            bajasMarca.setVisible(true);
         }
         
         
@@ -174,15 +245,36 @@ public class InterfazSecundaria extends javax.swing.JFrame {
 
     private void ConsultasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultasActionPerformed
         if(tabla.equals("Productos")){
-            //ConsultasProductos consultaspoductos = new ConsultasProductos();
-            //Cosnultasproductos.setVisible(true);
+            ConsultasProductos Cosnultasproductos = new ConsultasProductos();
+            Cosnultasproductos.setVisible(true);
         }else if(tabla.equals("Clientes")){
             ConsultasClientes consultasclientes = new ConsultasClientes();
             consultasclientes.setVisible(true);
         }else if(tabla.equals("Proveedores")){
             ConsultasProveedores consultasproveedores = new ConsultasProveedores();
             consultasproveedores.setVisible(true);
-        }        
+        }else if(tabla.equals("Cajeros")){
+            ConsultasCajeros consultasCajeros = new ConsultasCajeros();
+            consultasCajeros.setVisible(true);
+        }else if(tabla.equals("Ventas")){
+            ConsultasVentas consultasVentas = new ConsultasVentas();
+            consultasVentas.setVisible(true);
+        }else if(tabla.equals("DetalleVenta")){
+            ConsultasDetalleVenta consultasDetalleVenta = new ConsultasDetalleVenta();
+            consultasDetalleVenta.setVisible(true);
+        }else if(tabla.equals("Compras")){
+            ConsultasCompras consultasCompras = new ConsultasCompras();
+            consultasCompras.setVisible(true);
+        }else if(tabla.equals("DetalleCompra")){
+            ConsultasDetalleCompra consultasDetalleCompra = new ConsultasDetalleCompra();
+            consultasDetalleCompra.setVisible(true);
+        }else if(tabla.equals("Categoria")){
+            ConsultasCategoria consultasCategoria = new ConsultasCategoria();
+            consultasCategoria.setVisible(true);            
+        }else if(tabla.equals("Marca")){
+            ConsultasMarca consultasMarca = new ConsultasMarca();
+            consultasMarca.setVisible(true);
+        }                                    
     }//GEN-LAST:event_ConsultasActionPerformed
 
     
