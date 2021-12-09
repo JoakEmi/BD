@@ -67,22 +67,22 @@ public class CambiosClientes extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setText("Nombre del Cliente");
 
-        txtNombreCliente.setEnabled(false);
+        txtNombreCliente.setEditable(false);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel4.setText("Apellido del Cliente");
 
-        txtApellidoCliente.setEnabled(false);
+        txtApellidoCliente.setEditable(false);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel5.setText("Email del Cliente");
 
-        txtEmailCliente.setEnabled(false);
+        txtEmailCliente.setEditable(false);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel6.setText("Telefono del Cliente");
 
-        txtTelefonoCliente.setEnabled(false);
+        txtTelefonoCliente.setEditable(false);
 
         btnAceptar.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         btnAceptar.setText("Aceptar");
