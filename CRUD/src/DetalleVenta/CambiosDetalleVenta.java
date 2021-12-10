@@ -11,17 +11,42 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author airam
  */
 public class CambiosDetalleVenta extends javax.swing.JFrame {
-
+    
+    DefaultTableModel modelo;
     /**
      * Creates new form CambiosDetalleVenta
      */
     public CambiosDetalleVenta() {
         initComponents();
+        try{
+            Connection con1;
+            Conexion conect1 = new Conexion();
+            con1 = conect1.getConnection();
+            String sql = "SELECT * FROM Ventas WHERE NumeroVenta=(SELECT max(NumeroVenta) FROM Ventas);";
+
+            try (Statement st = con1.createStatement(); ResultSet rs = st.executeQuery(sql)) {
+                    
+                while(rs.next()){
+                    txtNumeroVenta.setText(rs.getString("NumeroVenta"));
+                }
+                    
+            }
+                conect1.Desconexion();
+
+            }catch(SQLException e){
+                
+                JOptionPane.showMessageDialog(null, e,
+                    "Error", JOptionPane.OK_OPTION);
+            }   
+        
+        modelo = (DefaultTableModel) tblDetalles.getModel();
+        Mostrar();
     }
 
     /**
@@ -34,217 +59,136 @@ public class CambiosDetalleVenta extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        txtId = new javax.swing.JTextField();
-        BtnBuscar = new javax.swing.JButton();
         txtNumeroVenta = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        txtCodigoProducto = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        txtCantidad = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        btnAceptar = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblDetalles = new javax.swing.JTable();
 
         setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("Cambios Detalle de Venta");
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel2.setText("ID de Venta: ");
-
-        BtnBuscar.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        BtnBuscar.setText("Buscar");
-        BtnBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnBuscarActionPerformed(evt);
-            }
-        });
-
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel3.setText("Código del Producto");
-
-        txtCodigoProducto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCodigoProductoActionPerformed(evt);
-            }
-        });
-
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel5.setText("Cantidad");
+        txtNumeroVenta.setEnabled(false);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel4.setText("Numero de Venta");
 
-        btnAceptar.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        btnAceptar.setText("Aceptar");
-        btnAceptar.addActionListener(new java.awt.event.ActionListener() {
+        jButton2.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        jButton2.setText("Aplicar Cambios");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAceptarActionPerformed(evt);
+                jButton2ActionPerformed(evt);
             }
         });
+
+        tblDetalles.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID Venta", "Codigo del Producto", "Cantidad"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, true, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tblDetalles);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(186, 186, 186)
-                .addComponent(btnAceptar)
-                .addContainerGap(186, Short.MAX_VALUE))
+                .addGap(30, 30, 30)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtNumeroVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton2)
+                .addGap(65, 65, 65))
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtCodigoProducto)
-                            .addComponent(txtCantidad)
-                            .addComponent(txtNumeroVenta)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtId)
-                                .addGap(18, 18, 18)
-                                .addComponent(BtnBuscar))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel1)
-                        .addGap(93, 93, 93)))
-                .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(191, 191, 191)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(100, 100, 100)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(102, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BtnBuscar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(txtNumeroVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txtCodigoProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(btnAceptar)
-                .addContainerGap(23, Short.MAX_VALUE))
+                    .addComponent(txtNumeroVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2))
+                .addGap(62, 62, 62)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(91, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BtnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBuscarActionPerformed
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        if(!txtId.getText().equals("")){
-
-            try{
-
-                Connection con1;
-                Conexion conect1 = new Conexion();
-                con1 = conect1.getConnection();
-                String sql = "SELECT NumeroVenta, CodigoProducto, Cantidad FROM DetalleVenta " +
-                "WHERE IdVenta = " + txtId.getText();
-
-                try (Statement st = con1.createStatement(); ResultSet rs = st.executeQuery(sql)) {
-
-                    while(rs.next()){
-
-                        txtNumeroVenta.setText(rs.getString("NumeroVenta"));
-                        txtCodigoProducto.setText(rs.getString("CodigoProducto"));
-                        txtCantidad.setText(rs.getString("Cantidad"));
-
-                    }
-
-                    txtNumeroVenta.setEditable(true);
-                    txtCodigoProducto.setEditable(true);
-                    txtCantidad.setEditable(true);
-
-                }
-
-                conect1.Desconexion();
-
-            }catch(SQLException e){
-
-                JOptionPane.showMessageDialog(null, e,
-                    "Error", JOptionPane.OK_OPTION);
-
-            }
-
-        }else
-
-        JOptionPane.showMessageDialog(null, "Inserta el ID",
-            "Error", JOptionPane.OK_OPTION);
-    }//GEN-LAST:event_BtnBuscarActionPerformed
-
-    private void txtCodigoProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoProductoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCodigoProductoActionPerformed
-
-    private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-        // TODO add your handling code here:
-        if(!txtNumeroVenta.getText().equals("") && !txtCodigoProducto.getText().equals("") && !txtCantidad.getText().equals("")){
-
-            try{
-
-                Connection con1;
-                Conexion conect1 = new Conexion();
-                con1 = conect1.getConnection();
-                String sql = "UPDATE DetalleVenta "
-                + "SET NumeroVenta = '" + txtNumeroVenta.getText() + "', "
-                + "CodigoProducto = '" + txtCodigoProducto.getText() + "', "
-                + "Cantidad = '" + txtCantidad.getText() + "' "
-                + "WHERE IdVenta= '" + txtId.getText() +"' ;";
-
-                try(Statement st = con1.createStatement()){
-
-                    st.executeUpdate(sql);
-
-                }
-
-                conect1.Desconexion();
-
-            }catch(SQLException e){
-                JOptionPane.showMessageDialog(null, e,
-                    "Error", JOptionPane.OK_OPTION);
-            }
-
-        }else
-
-        JOptionPane.showMessageDialog(null, "Inserta todos los datos",
-            "Error", JOptionPane.OK_OPTION);
-
+        txtNumeroVenta.setText("");
         this.dispose();
-    }//GEN-LAST:event_btnAceptarActionPerformed
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BtnBuscar;
-    private javax.swing.JButton btnAceptar;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JTextField txtCantidad;
-    private javax.swing.JTextField txtCodigoProducto;
-    private javax.swing.JTextField txtId;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tblDetalles;
     private javax.swing.JTextField txtNumeroVenta;
     // End of variables declaration//GEN-END:variables
+
+    public void Mostrar(){
+        try{
+            Connection con1;
+            Conexion conect1 = new Conexion();
+            con1 = conect1.getConnection();
+            String sql = "SELECT CodigoProducto, Cantidad FROM DetalleVenta " +
+            "WHERE NumeroVenta = " + txtNumeroVenta.getText();
+
+                try (Statement st = con1.createStatement(); ResultSet rs = st.executeQuery(sql)) {
+                       String datos[] = new String[3];
+                    while(rs.next()){
+                      datos[0] = rs.getString(1);
+                      datos[1] = rs.getString(2);
+                      datos[2] = rs.getString(3);
+                      
+                      modelo.addRow(datos);
+                    }
+
+
+                }
+
+                conect1.Desconexion();
+
+            }catch(SQLException e){
+
+                JOptionPane.showMessageDialog(null, e,
+                    "Error", JOptionPane.OK_OPTION);
+
+            }
+    }
 }
