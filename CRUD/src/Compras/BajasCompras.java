@@ -88,7 +88,15 @@ public class BajasCompras extends javax.swing.JFrame {
                 Connection con1;
                 Conexion conect1 = new Conexion();
                 con1 = conect1.getConnection();
-                String sql = "DELETE FROM Compras WHERE NumeroCompras = " + txtId.getText();
+                String sql2 = "DELETE FROM DetalleCompra WHERE NumeroCompra = " + txtId.getText();
+                
+                try (Statement st = con1.createStatement()) {
+
+                    st.executeUpdate(sql2);
+
+                }
+                
+                String sql = "DELETE FROM Compras, DetalleCompra WHERE Compras.NumeroCompra = " + txtId.getText() + " AND DetalleCompra.NumeroCompra = " + txtId.getText();
 
                 try (Statement st = con1.createStatement()) {
 

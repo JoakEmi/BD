@@ -37,12 +37,12 @@ public class ConsultasCompras extends javax.swing.JFrame {
         BtnBuscar = new javax.swing.JButton();
         txtMonto = new javax.swing.JTextField();
         txIdProveedor = new javax.swing.JTextField();
-        dateFecha = new com.toedter.calendar.JDateChooser();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         BtnAceptar = new javax.swing.JButton();
+        txtFecha = new javax.swing.JTextField();
 
         setResizable(false);
 
@@ -60,9 +60,6 @@ public class ConsultasCompras extends javax.swing.JFrame {
         txtMonto.setEnabled(false);
 
         txIdProveedor.setEnabled(false);
-
-        dateFecha.setDateFormatString("dd-MM-yyyy");
-        dateFecha.setEnabled(false);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setText("Monto");
@@ -83,6 +80,8 @@ public class ConsultasCompras extends javax.swing.JFrame {
                 BtnAceptarActionPerformed(evt);
             }
         });
+
+        txtFecha.setEditable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -105,10 +104,13 @@ public class ConsultasCompras extends javax.swing.JFrame {
                         .addComponent(txtId, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(BtnBuscar))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(txtMonto, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(txIdProveedor, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(dateFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txtMonto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
+                                .addComponent(txIdProveedor, javax.swing.GroupLayout.Alignment.TRAILING)))
+                        .addGap(0, 0, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(126, 126, 126)
                 .addComponent(jLabel1)
@@ -129,14 +131,13 @@ public class ConsultasCompras extends javax.swing.JFrame {
                     .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BtnBuscar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(txtMonto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel4))
-                    .addComponent(dateFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(txtMonto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
@@ -167,12 +168,12 @@ public class ConsultasCompras extends javax.swing.JFrame {
                     while(rs.next()){
 
                         txtMonto.setText(rs.getString("Monto"));
-                        dateFecha.setDate(rs.getDate("Fecha"));
+                        txtFecha.setText(rs.getString("Fecha"));
                         txIdProveedor.setText(rs.getString("IdProveedor"));
                     }
 
                     txtMonto.setEditable(true);
-                    dateFecha.setEnabled(true);
+                    txtFecha.setEnabled(true);
                     txIdProveedor.setEditable(true);
                 }
 
@@ -203,13 +204,13 @@ public class ConsultasCompras extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnAceptar;
     private javax.swing.JButton BtnBuscar;
-    private com.toedter.calendar.JDateChooser dateFecha;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JTextField txIdProveedor;
+    private javax.swing.JTextField txtFecha;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtMonto;
     // End of variables declaration//GEN-END:variables

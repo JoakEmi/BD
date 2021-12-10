@@ -43,7 +43,7 @@ public class CambiosCompras extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        dateFecha = new com.toedter.calendar.JDateChooser();
+        txtFecha = new javax.swing.JTextField();
 
         setResizable(false);
 
@@ -82,8 +82,7 @@ public class CambiosCompras extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel4.setText("Fecha");
 
-        dateFecha.setDateFormatString("dd-MM-yyyy");
-        dateFecha.setEnabled(false);
+        txtFecha.setEditable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -100,16 +99,21 @@ public class CambiosCompras extends javax.swing.JFrame {
                             .addComponent(jLabel5)
                             .addComponent(jLabel3)
                             .addComponent(jLabel4))))
-                .addGap(9, 9, 9)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtId, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
+                        .addGap(9, 9, 9)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtId, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(BtnBuscar))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txtMonto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
+                                .addComponent(txIdProveedor, javax.swing.GroupLayout.Alignment.TRAILING))))
+                    .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(BtnBuscar))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(txtMonto, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(txIdProveedor, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(dateFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -131,21 +135,20 @@ public class CambiosCompras extends javax.swing.JFrame {
                     .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BtnBuscar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(txtMonto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel4))
-                    .addComponent(dateFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(txtMonto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
                     .addComponent(txIdProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btnAceptar)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         pack();
@@ -169,12 +172,12 @@ public class CambiosCompras extends javax.swing.JFrame {
                     while(rs.next()){
 
                         txtMonto.setText(rs.getString("Monto"));
-                        dateFecha.setDate(rs.getDate("Fecha"));
+                        txtFecha.setText(rs.getString("Fecha"));
                         txIdProveedor.setText(rs.getString("IdProveedor"));
                     }
 
                     txtMonto.setEditable(true);
-                    dateFecha.setEnabled(true);
+                    txtFecha.setEnabled(true);
                     txIdProveedor.setEditable(true);
                 }
 
@@ -195,7 +198,7 @@ public class CambiosCompras extends javax.swing.JFrame {
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
         // TODO add your handling code here:
-        if(!txtMonto.getText().equals("") && !dateFecha.getDate().equals("") && !txIdProveedor.getText().equals("")){
+        if(!txtMonto.getText().equals("") && !txtFecha.getText().equals("") && !txIdProveedor.getText().equals("")){
             try{
 
                 Connection con1;
@@ -203,7 +206,7 @@ public class CambiosCompras extends javax.swing.JFrame {
                 con1 = conect1.getConnection();
                 String sql = "UPDATE Compras "
                 + "SET Monto = '" + txtMonto.getText() + "', "
-                + "Fecha = '" + dateFecha.getDate() + "', "
+                + "Fecha = '" + txtFecha.getText() + "', "
                 + "IdProveedor = '" + txIdProveedor.getText() + "', "
                 + "WHERE NumeroCompra = '" + txtId.getText() +"' ;";
 
@@ -235,13 +238,13 @@ public class CambiosCompras extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnBuscar;
     private javax.swing.JButton btnAceptar;
-    private com.toedter.calendar.JDateChooser dateFecha;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JTextField txIdProveedor;
+    private javax.swing.JTextField txtFecha;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtMonto;
     // End of variables declaration//GEN-END:variables

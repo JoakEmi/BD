@@ -4,6 +4,7 @@
  */
 package Compras;
 
+import DetalleCompra.*;
 import Conexiones.Conexion;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -33,19 +34,17 @@ public class AltasCompras extends javax.swing.JFrame {
 
         jLabel2 = new javax.swing.JLabel();
         txtMonto = new javax.swing.JTextField();
-        dateFecha = new com.toedter.calendar.JDateChooser();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         txIdProveedor = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        txtFecha = new javax.swing.JTextField();
 
         setResizable(false);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setText("Monto");
-
-        dateFecha.setDateFormatString("dd-MM-yyyy");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setText("Fecha");
@@ -84,9 +83,9 @@ public class AltasCompras extends javax.swing.JFrame {
                             .addComponent(jLabel3))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtMonto, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtMonto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
                             .addComponent(txIdProveedor, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(dateFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtFecha))))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -99,19 +98,16 @@ public class AltasCompras extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(txtMonto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(dateFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(3, 3, 3))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txIdProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         pack();
@@ -120,14 +116,14 @@ public class AltasCompras extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        if(!txtMonto.getText().equals("") && !dateFecha.getDate().equals("") && !txIdProveedor.getText().equals("")){
+        if(!txtMonto.getText().equals("") && !txtFecha.getText().equals("") && !txIdProveedor.getText().equals("")){
             try{
 
                 Connection con1;
                 Conexion conect1 = new Conexion();
                 con1 = conect1.getConnection();
                 String sql = "INSERT INTO Compras (Monto, Fecha, IdProveedor)"
-                + "VALUES('" + txtMonto.getText() + "','" + dateFecha.getDate() + "','" +
+                + "VALUES('" + txtMonto.getText() + "','" + txtFecha.getText() + "','" +
                 txIdProveedor.getText() +"')";
 
                 try (Statement st = con1.createStatement()) {
@@ -143,7 +139,10 @@ public class AltasCompras extends javax.swing.JFrame {
         }else
         JOptionPane.showMessageDialog(null, "Inserta todos los datos",
             "Error", JOptionPane.OK_OPTION);
-
+        
+        AltasDetalleCompra adc = new AltasDetalleCompra();
+        adc.setVisible(true);
+        
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -152,13 +151,13 @@ public class AltasCompras extends javax.swing.JFrame {
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.toedter.calendar.JDateChooser dateFecha;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JTextField txIdProveedor;
+    private javax.swing.JTextField txtFecha;
     private javax.swing.JTextField txtMonto;
     // End of variables declaration//GEN-END:variables
 }
