@@ -10,7 +10,7 @@ import Cajeros.*;
 import Ventas.*;
 import DetalleVenta.*;
 import Compras.*;
-import DetalleCompra.*;
+//import DetalleCompra.*;
 import Categoria.*;
 import Marca.*;
 import java.awt.event.ActionEvent;
@@ -156,8 +156,8 @@ public class InterfazSecundaria extends javax.swing.JFrame {
             CambiosCompras cambiosCompras = new CambiosCompras();
             cambiosCompras.setVisible(true);
         }else if(tabla.equals("DetalleCompra")){
-            CambiosDetalleCompra cambiosDetalleCompra = new CambiosDetalleCompra();
-            cambiosDetalleCompra.setVisible(true);
+            //CambiosDetalleCompra cambiosDetalleCompra = new CambiosDetalleCompra();
+            //cambiosDetalleCompra.setVisible(true);
         }else if(tabla.equals("Categoria")){
             CambiosCategoria cambiosCategoria = new CambiosCategoria();
             cambiosCategoria.setVisible(true);
@@ -191,8 +191,8 @@ public class InterfazSecundaria extends javax.swing.JFrame {
             AltasCompras altasCompras = new AltasCompras();
             altasCompras.setVisible(true);
         }else if(tabla.equals("DetalleCompra")){
-            AltasDetalleCompra altasDetalleCompra = new AltasDetalleCompra();
-            altasDetalleCompra.setVisible(true);
+            //AltasDetalleCompra altasDetalleCompra = new AltasDetalleCompra();
+            //altasDetalleCompra.setVisible(true);
         }else if(tabla.equals("Categoria")){
             AltasCategoria altasCategoria = new AltasCategoria();
             altasCategoria.setVisible(true);
@@ -230,8 +230,8 @@ public class InterfazSecundaria extends javax.swing.JFrame {
             BajasCompras bajasCompras = new BajasCompras();
             bajasCompras.setVisible(true);
         }else if(tabla.equals("DetalleCompra")){
-            BajasDetalleCompra bajasDetalleCompra = new BajasDetalleCompra();
-            bajasDetalleCompra.setVisible(true);
+            //BajasDetalleCompra bajasDetalleCompra = new BajasDetalleCompra();
+            //bajasDetalleCompra.setVisible(true);
         }else if(tabla.equals("Categoria")){
             BajasCategoria bajasCategoria = new BajasCategoria();
             bajasCategoria.setVisible(true);        
@@ -266,8 +266,8 @@ public class InterfazSecundaria extends javax.swing.JFrame {
             ConsultasCompras consultasCompras = new ConsultasCompras();
             consultasCompras.setVisible(true);
         }else if(tabla.equals("DetalleCompra")){
-            ConsultasDetalleCompra consultasDetalleCompra = new ConsultasDetalleCompra();
-            consultasDetalleCompra.setVisible(true);
+            //ConsultasDetalleCompra consultasDetalleCompra = new ConsultasDetalleCompra();
+            //consultasDetalleCompra.setVisible(true);
         }else if(tabla.equals("Categoria")){
             ConsultasCategoria consultasCategoria = new ConsultasCategoria();
             consultasCategoria.setVisible(true);            
